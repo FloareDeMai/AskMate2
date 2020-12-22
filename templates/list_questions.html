@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+
+{% block title %}List of questions{% endblock %}
+
+
+
+{% block body %}
+
+<h1 class='center'>List of Questions</h1>
+
+<table class="table-questions">
+    <thead>
+        <tr>
+        {% for header in data_header %}
+        <th>{{ header }}</th>
+        {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for question in questions %}
+        <tr>
+            <td>{{ question['id'] }}</td>
+            <td>{{ question['submission_time'] }}</td>
+            <td>{{ question['view_number'] }}</td>
+            <td>{{ question['vote_number'] }}  <a href="{{ url_for('vote_up', question_id=question['id']) }}">Vote up</a><br><br><a href="{{ url_for('vote_down', question_id=question['id']) }}">Vote down</a></td>
+            <td><a href="{{ url_for('show_question', question_id=question['id']) }}">{{ question['title'] }}</a></td>
+            <td>{{ question['message'] }}</td>
+            <td><img src="{{ question['image'] }}" height="150" alt="image from url"></td>
+        </tr>
+        {% endfor %}
+       
+    </tbody>
+</table>
+<a class="center" href="/add-question">Ask question</a><br><br>
+<a href="/list?order_by=title&order_direction=asc">Sort by title asc</a><br><br>
+<a href="/list?order_by=title&order_direction=desc">Sort by title desc</a><br><br>
+<a href="/list">Unsort</a>
+
+{% endblock %}

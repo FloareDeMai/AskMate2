@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+
+{% block title %}Add a questions{% endblock %}
+
+
+
+{% block body %}
+
+<h1>Ask question</h1>
+
+<form action="" method="POST" enctype="multipart/form-data">
+    <label for="title">Title:</label><br>
+    <input name="title" id="title" type="text" required><br><br>
+
+    <label for="message">Message:</label><br>
+    <textarea name="message" id="message" cols="30" rows="10"></textarea><br><br>
+
+    <label for="image">Upload image:</label><br><br>
+    <input type="file" name="file"><br><br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}
